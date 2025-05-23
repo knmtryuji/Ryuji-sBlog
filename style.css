@@ -1,0 +1,190 @@
+/* フレックスボックスを適用 */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ece8e8;
+  display: flex;
+  flex-direction: column;
+}
+
+/* コンテンツエリアを拡張 */
+.container {
+  flex: 1; /* コンテナ部分が残りのスペースを埋める */
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+header {
+  background-color: #1f4568;
+  color: white;
+  padding: 1.3rem;
+  width: 140px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  header {
+    width: 50px;
+    height: 50px;
+    background: #1f4568;
+    text-align: center;
+    font-size: 0.4rem;
+  }
+}
+
+.post {
+  background: white;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem; /* 写真間の隙間 */
+}
+/* 画像のホバー時のスタイルを追加 */
+.image-container img {
+  width: 300px; /* 幅を固定 */
+  height: 300px; /* 高さを固定 */
+  object-fit: cover; /* 縦横比を維持しつつ切り取り */
+  border-radius: 8px; /* 角を丸くする */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 写真に影を追加 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* ホバー時のアニメーションを滑らかに */
+}
+
+.image-container img:hover {
+  transform: scale(1.05); /* ホバー時に画像を拡大 */
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2); /* ホバー時の影を強調 */
+  cursor: pointer; /* ホバー時にカーソルを変更 */
+}
+
+.btn {
+  align-items: center;
+  display: flex;
+}
+
+#scrollToTopBtn {
+  margin-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #1f4568; /* ボタンの背景色 */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+  transition: opacity 0.3s ease;
+}
+
+#scrollToTopBtn:hover {
+  background-color: #436e96; /* ホバー時の背景色 */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.post h2 {
+  color: #ffffff;
+  width: 300px;
+  background: #1f4568;
+}
+
+/* フッターを固定 */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #1f4568;
+  color: white;
+  position: relative; /* 既存のフッターのスタイルを保つ */
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* 中央配置＆サイズ調整（画面の約1/4） */
+.modal-content {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 33vw; /* PC時：横幅33% */
+  height: 53vh; /* PC時：高さ33% */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  /* overflow: auto; */
+}
+
+/* モーダル内の画像とテキストのスタイル */
+.modal-body {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+}
+
+.modal-text {
+  flex: 1;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.modal-image {
+  flex: 1;
+  text-align: center;
+}
+
+.modal-image img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* 閉じるボタン */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* スマホ対応：幅80%、高さ40%に */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 80vw;
+    height: 40vh;
+    padding: 15px;
+  }
+
+  .modal-text {
+    font-size: 0.8rem;
+  }
+}
+
+.close:hover {
+  color: #555;
+}
